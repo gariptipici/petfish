@@ -8,10 +8,6 @@ mvnw
 .mvn/
 mvnw.cmd
 
-gradle/
-gradlew.bat
-settings.gradle
-
 data/
 
 ### STS ###
