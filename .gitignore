@@ -64,10 +64,6 @@ Icon
 *.war
 *.ear
 
-### Gradle ###
-# Exclude Folder List #
-.gradle/
-
 
 ### Eclipse ###
 *.pydevproject
