@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  petfish:
+    container_name: petfish
+    image: petfish:0.0.1-SNAPSHOT
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - "8081:8080"
