@@ -9,7 +9,6 @@ mvnw
 mvnw.cmd
 
 gradle/
-gradlew
 gradlew.bat
 settings.gradle
 
