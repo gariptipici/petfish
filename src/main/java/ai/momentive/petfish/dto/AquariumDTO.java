@@ -2,7 +2,6 @@ package ai.momentive.petfish.dto;
 
 import ai.momentive.petfish.enums.Unit;
 import lombok.Data;
-
 import java.util.List;
 
 @Data
