@@ -32,16 +32,6 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 
-apply plugin: "org.sonarqube"
-
-test {
-    useJUnitPlatform()
-    finalizedBy jacocoTestReport // report is always generated after tests run
-}
-
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
-}
 
 sonarqube {
     properties {
