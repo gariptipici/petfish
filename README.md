@@ -1,3 +1,5 @@
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=gariptipici_petfish)](https://sonarcloud.io/dashboard?id=gariptipici_petfish)
+
 #Garip Tipici 
 
 Development Started: 28 July
