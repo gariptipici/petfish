@@ -33,6 +33,19 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled true
+    }
+}
+
+test {
+    maxParallelForks = 1
+    finalizedBy jacocoTestReport
+}
+
+
 sonarqube {
     properties {
         property "sonar.projectKey", "gariptipici_petfish"
@@ -43,14 +56,4 @@ sonarqube {
     }
 }
 
-jacocoTestReport {
-    group = "Reporting"
-    reports {
-        xml.enabled true
-        csv.enabled false
-        //to create coverage report in html
-        html.destination file("${buildDir}/reports/coverage")
-        //for XML
-        xml.destination file("${buildDir}/reports/jacoco.xml")
-    }
-}
+
