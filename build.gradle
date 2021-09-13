@@ -1,16 +1,34 @@
 plugins {
-    id "org.sonarqube" version "3.3"
+    id 'java'
     id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
     id 'jacoco'
+    id "org.sonarqube" version "2.7"
 }
 
-apply plugin: 'jacoco'
+sonarqube {
+    properties {
+        property "sonar.projectKey", "gariptipici_petfish"
+        property "sonar.organization", "gariptipici"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property 'sonar.core.codeCoveragePlugin', 'jacoco'
+        property("sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+        property("sonar.sources", "src/main")
+        property("sonar.tests", "src/test")
+    }
+}
+
+jacocoTestReport {
+    // we are forcing the execution of 'test' before the execution of 'jacocoTestReport'
+    dependsOn test
+}
 
 group = 'ai.momentive'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+
+apply plugin: 'jacoco'
 
 configurations {
     compileOnly {
@@ -32,28 +50,4 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
-
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.enabled true
-    }
-}
-
-test {
-    maxParallelForks = 1
-    finalizedBy jacocoTestReport
-}
-
-
-sonarqube {
-    properties {
-        property "sonar.projectKey", "gariptipici_petfish"
-        property "sonar.organization", "gariptipici"
-        property "sonar.host.url", "https://sonarcloud.io"
-        property 'sonar.core.codeCoveragePlugin', 'jacoco'
-        property 'sonar.coverage.jacoco.xmlReportPaths', '${project.buildDir}/reports/jacoco.xml'
-    }
-}
-
 
